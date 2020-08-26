@@ -15,6 +15,7 @@ jobs:
       with:
         REPO_NAME: 'Ninja-Developers/Quizzer'
         CONTRIBUTOR: '## Contributors'
+        
         COLUMN_PER_ROW: '7'
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
         IMG_WIDTH: '100'
