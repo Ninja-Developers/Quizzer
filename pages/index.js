@@ -43,11 +43,15 @@ export async function getStaticProps(context) {
 
     const { getAllQuizzes } = require('../lib/airtable/quiz')
 
-    let data = await getAllQuizzes()
+    const data = await getAllQuizzes()
+
+    data.forEach(el => {
+        console.log(JSON.parse(el.Questions))
+    })
 
     return {
-        props: {    
-            quizzes: data
+        props: {
+            quizzes: "name"
         }
     }
 }
