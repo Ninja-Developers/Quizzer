@@ -10,7 +10,7 @@ const AddQuestion = props => {
 
     return <>
         <Tooltip title="add question">
-            <Fab>
+            <Fab onClick={props.onClick}>
                 <Add />
             </Fab>
         </Tooltip>

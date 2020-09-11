@@ -7,10 +7,20 @@ import {
     Grid
 } from '@material-ui/core'
 
+import { Addquestion } from '../components/buttons'
+
+class Worksheet{
+    constructor(question, options, answer){
+        this.question = question
+        this.options = options
+        this.answer = answer
+    }
+}
+
 
 const Create = props => {
 
-    const [worksheet, setWorksheet] = useState([{ question: 'What is your name', options: ['Souvik', 'Shounk'], ans: '' }, { question: '', options: [], ans: '' }])
+    const [worksheet, setWorksheet] = useState([new Worksheet("What is my name", ['Souvik', 'Shounak', 'Hahah'] , 0), new Worksheet('',[],null)])
 
     const [check, setCheck] = useState([{ name: 'Souvik' }, { name: 'Shounak' }])
 
@@ -33,15 +43,21 @@ const Create = props => {
 
     return <>
         <Container>
-            <Grid container spacing={4}>
-                {worksheet.map(el => <Grid item ><Questions data={el} /></Grid>)}
+            <Grid container spacing={2}>
+                {worksheet.map(el => <Grid item xs={12} ><Questions data={el} /></Grid>)}
 
 
             </Grid>
 
-            {check.map((el, index) => <><input type="text" name="" id="" onChange={e => { handleChange(e, index) }} value={el.name} /></>)}
+            <Grid container spacing={2}>
+                <Grid item xs={11} />
 
-            <button onClick={() => console.log(check)}>Press</button>
+                <Grid item xs={1}>
+                    <Addquestion onClick={() => {console.log(JSON.stringify(worksheet))}} />
+                </Grid>
+
+            </Grid>
+
         </Container>
     </>
 }
