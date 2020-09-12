@@ -17,16 +17,10 @@ It also helps you to manage and reform various operations in the quiz, such as r
 
 ---
 ## Getting Started 🎉
-This project is built on **MERN** stack, to setup local enviroment follow these steps:
+This project is built using nextjs and to setup local development server:
 
-- clone the repo 
-- get inside the repo using `cd Quizzer`
-- install the dependencies `npm i`, this will install the dependency for the nodejs enviorment 
-- get inside the client folder `cd client` 
-- to install the react dependencies run command `npm i`
-
-- to run the nodejs dev server run `npm run dev-server`
-- to run the react dev server run `npm run dev-client`
+- install the dependencies `npm i`
+- run the local dev server `npm run dev`
 
 ---
 
