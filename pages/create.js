@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, createRef } from 'react'
 
 import Questions from '../components/questions/quiz.holder'
 
@@ -9,8 +9,8 @@ import {
 
 import { Addquestion } from '../components/buttons'
 
-class Worksheet{
-    constructor(question, options, answer){
+class Worksheet {
+    constructor(question, options, answer) {
         this.question = question
         this.options = options
         this.answer = answer
@@ -20,7 +20,7 @@ class Worksheet{
 
 const Create = props => {
 
-    const [worksheet, setWorksheet] = useState([new Worksheet("What is my name", ['Souvik', 'Shounak', 'Hahah'] , 0), new Worksheet('',[],null)])
+    const [worksheet, setWorksheet] = useState([new Worksheet("What is my name", ['Souvik', 'Shounak', 'Hahah'], 0), new Worksheet('', [], null)])
 
     const [check, setCheck] = useState([{ name: 'Souvik' }, { name: 'Shounak' }])
 
@@ -41,6 +41,10 @@ const Create = props => {
         setCheck(x)
     }
 
+    const formRef = createRef(null)
+
+    
+
     return <>
         <Container>
             <Grid container spacing={2}>
@@ -53,7 +57,7 @@ const Create = props => {
                 <Grid item xs={11} />
 
                 <Grid item xs={1}>
-                    <Addquestion onClick={() => {console.log(JSON.stringify(worksheet))}} />
+                    <Addquestion onClick={() => { console.log(JSON.stringify(worksheet)) }} />
                 </Grid>
 
             </Grid>
