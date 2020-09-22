@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import Question from './question'
+import Options from './options'
 
 import {
     Container,
     makeStyles,
     FormControl,
     TextField,
-    Grid
+    Grid,
+    Paper
 } from '@material-ui/core'
 
 interface props {
@@ -22,44 +25,27 @@ const useStyle = makeStyles(theme => ({
 
 const QuizHolder = (props: props) => {
 
-    const [question, setQuestion] = useState(props.question)
-
-    const [options, setOptions] = useState(props.options)
-
-    const [answer, setAnswer] = useState(props.answer)
-
     const classes = useStyle()
 
     return <>
-        <Container className={classes.root}>
+        <Container>
+            <Paper className={classes.root}>
 
-            <Grid container spacing={4}>
-
-                <Grid item xs={12}>
-                    <FormControl fullWidth>
-                        <TextField
-                            value={question}
-                        />
-                    </FormControl>
-
+                <Grid container spacing={4}>
                     <Grid item xs={12}>
+                        <Question question={props.question} />
+                    </Grid>
 
-                        <Grid container spacing={2}>
-                            {options.map(el => <>
-                                <FormControl fullWidth>
-                                    <TextField
-                                        value={el}
-                                    />
-                                </FormControl>
-                            </>)}
-                        </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Options options={props.options} />
 
                     </Grid>
-                    
+
                 </Grid>
 
-            </Grid>
 
+
+            </Paper>
         </Container>
     </>
 }
