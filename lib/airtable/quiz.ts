@@ -1,4 +1,4 @@
-const Airtable = require('airtable')
+import Airtable from 'airtable'
 
 const Base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.QUIZZER_BASE)
 
@@ -36,7 +36,7 @@ const fetchAQuiz = async id => {
 }
 
 
-module.exports = {
+export {
     getAllQuizzes,
     createQuiz,
     fetchAQuiz
