@@ -1,28 +1,19 @@
 // importing modules 
 import QuizHolder from '../components/questions/quiz.holder'
-import { Quiz } from '../lib/types/quiz'
+import { connect } from 'react-redux'
+import {Quiz} from '../redux/reducers/quiz'
 
 const Create = props => {
 
-
-
-    let data: Array<Quiz> = [
-        {
-            question: 'what is my name',
-            options: ['Souvik', 'Shounak'],
-            answer: 0
-        },
-        {
-            question: 'what is your name',
-            options: ['Shounak', 'Souvik'],
-            answer: 0
-        }
-    ]
-
     return <>
-        {data.map(el => <QuizHolder question={el.question} options={el.options} answer={el.answer} />)}
+        {props.quizzes.map((quiz: Quiz) => <QuizHolder question={quiz.question} options={quiz.options} answer={quiz.answer} />)}
     </>
 }
 
+const mapStateToProps = state => {
+    return {
+        quizzes: state.quiz.quizzes
+    }
+}
 
-export default Create
+export default connect(mapStateToProps)(Create)
