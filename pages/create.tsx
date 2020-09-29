@@ -1,19 +1,30 @@
 // importing modules 
-import QuizHolder from '../components/questions/quiz.holder'
-import { connect } from 'react-redux'
-import {Quiz} from '../redux/reducers/quiz'
+import { useRef, useState } from 'react'
 
-const Create = props => {
+const Question = () => {
 
+    return (
+        <div>
+            <input />
+        </div>
+    )
+}
+
+const Create = () => {
+    const mainRef = useRef(null)
+    const [quizCount, setQuizCount] = useState([1,2,3])
     return <>
-        {props.quizzes.map((quiz: Quiz) => <QuizHolder question={quiz.question} options={quiz.options} answer={quiz.answer} />)}
+        <div ref={mainRef}>
+            {quizCount.map(el => <Question />)}
+            <button onClick={() => {
+                console.log(mainRef.current.children[0].firstElementChild.value)
+                let children: Array<any> = mainRef.current.children
+                console.log(children.length)
+            }}>Press</button>
+        </div>
     </>
 }
 
-const mapStateToProps = state => {
-    return {
-        quizzes: state.quiz.quizzes
-    }
-}
 
-export default connect(mapStateToProps)(Create)
+
+export default Create
