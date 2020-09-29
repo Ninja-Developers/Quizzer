@@ -19,7 +19,8 @@ interface props {
 
 const useStyle = makeStyles(theme => ({
     root: {
-        padding: theme.spacing(4, 6)
+        padding: theme.spacing(4, 6),
+        margin: theme.spacing(6,2)
     }
 }))
 
@@ -29,7 +30,7 @@ const QuizHolder = (props: props) => {
 
     return <>
         <Container>
-            <Paper className={classes.root}>
+            <Paper variant="outlined" className={classes.root}>
 
                 <Grid container spacing={4}>
                     <Grid item xs={12}>
