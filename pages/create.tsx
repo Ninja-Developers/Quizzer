@@ -1,28 +1,38 @@
 // importing modules 
 import { useRef, useState } from 'react'
 
+import {
+    Grid,
+    FormControl,
+    TextField
+} from '@material-ui/core'
+
 const Question = () => {
 
     return (
         <div>
-            <input />
+            <Grid container spacing={4}>
+                <Grid item xs={12}>
+                    <FormControl fullWidth>
+                        <TextField variant="outlined" />
+                    </FormControl>
+                </Grid>
+            </Grid>
         </div>
     )
 }
 
 const Create = () => {
     const mainRef = useRef(null)
-    const [quizCount, setQuizCount] = useState([1,2,3])
+    const [quizCount, setQuizCount] = useState([1, 2, 3])
     return <>
-        <div ref={mainRef}>
-            {quizCount.map(el => <Question />)}
-            <button onClick={() => {
-                console.log(mainRef.current.children[0].firstElementChild.value)
-                let children: Array<any> = mainRef.current.children
-                for(let i = 0; i< children.length -1 ; i++) {
-                    console.log(children[i].children[0].value)
-                }
+        <div>
+            <div ref={mainRef}>
+                {quizCount.map(el => <Question />)}
+            </div>
 
+            <button onClick={() => {
+                console.log(mainRef.current.children[0].children[0].children[0].children[0].children[0].children[0].children[0].value)
                 
             }}>Press</button>
         </div>
