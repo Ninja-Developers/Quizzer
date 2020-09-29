@@ -19,7 +19,11 @@ const Create = () => {
             <button onClick={() => {
                 console.log(mainRef.current.children[0].firstElementChild.value)
                 let children: Array<any> = mainRef.current.children
-                console.log(children.length)
+                for(let i = 0; i< children.length -1 ; i++) {
+                    console.log(children[i].children[0].value)
+                }
+
+                
             }}>Press</button>
         </div>
     </>
