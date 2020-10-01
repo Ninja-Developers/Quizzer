@@ -1,40 +1,86 @@
 // importing modules 
-import { useRef, useState } from 'react'
+import { useRef, useState, CSSProperties } from 'react'
 
 import {
     Grid,
     FormControl,
-    TextField
+    TextField,
+    Paper,
+    Container,
+    makeStyles,
+    Theme,
+    Select,
+    MenuItem
 } from '@material-ui/core'
 
+const useStyle = makeStyles((theme: Theme) => ({
+    paper: {
+        padding: theme.spacing(4, 4),
+        margin: theme.spacing(4, 0)
+    }
+}))
+
 const Question = () => {
+    
 
     return (
         <div>
             <Grid container spacing={4}>
                 <Grid item xs={12}>
                     <FormControl fullWidth>
-                        <TextField variant="outlined" />
+                        <TextField variant="standard" label="Question" />
                     </FormControl>
+                </Grid>
+                <Grid item xs={2}>
+                    <FormControl fullWidth>
+                        <Select
+                        value={2}
+                        >
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                    <Options optionCount={2} />
                 </Grid>
             </Grid>
         </div>
     )
 }
 
+const Options = ({ optionCount }) => {
+
+    let count = []
+    for (let i = 0; i < optionCount; i++) {
+        count.push(i)
+    }
+
+    return (
+        <div>
+            <Grid container spacing={2}>
+                {count.map(el => <Grid item xs={6}>
+                    <FormControl fullWidth>
+                        <TextField label={`option ${el + 1 }`} />
+                    </FormControl>
+                </Grid>)}
+            </Grid>
+        </div>
+    )
+}
+
+
+
 const Create = () => {
-    const mainRef = useRef(null)
-    const [quizCount, setQuizCount] = useState([1, 2, 3])
+    const classes = useStyle()
     return <>
         <div>
-            <div ref={mainRef}>
-                {quizCount.map(el => <Question />)}
-            </div>
-
-            <button onClick={() => {
-                console.log(mainRef.current.children[0].children[0].children[0].children[0].children[0].children[0].children[0].value)
-                
-            }}>Press</button>
+            <Container>
+                <Paper variant="outlined" className={classes.paper}>
+                    <Question />
+                </Paper>
+            </Container>
         </div>
     </>
 }
