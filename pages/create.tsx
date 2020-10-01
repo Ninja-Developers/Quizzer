@@ -1,5 +1,5 @@
 // importing modules 
-import { useRef, useState, CSSProperties } from 'react'
+import { useRef, useState, CSSProperties, ChangeEvent } from 'react'
 
 import {
     Grid,
@@ -21,7 +21,13 @@ const useStyle = makeStyles((theme: Theme) => ({
 }))
 
 const Question = () => {
-    
+
+    const [optCount, setOptCount] = useState(2)
+
+    const selectHandler = (event: ChangeEvent<{ value: unknown }>) => {
+        setOptCount(event.target.value as number);
+    }
+
 
     return (
         <div>
@@ -34,7 +40,8 @@ const Question = () => {
                 <Grid item xs={2}>
                     <FormControl fullWidth>
                         <Select
-                        value={2}
+                            value={optCount}
+                            onChange={selectHandler}
                         >
                             <MenuItem value={2}>2</MenuItem>
                             <MenuItem value={3}>3</MenuItem>
@@ -43,7 +50,10 @@ const Question = () => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={12}>
-                    <Options optionCount={2} />
+                    <Options optionCount={optCount} />
+                </Grid>
+                <Grid item xs={2}>
+                    <Answer optionCount={optCount} />
                 </Grid>
             </Grid>
         </div>
@@ -62,9 +72,30 @@ const Options = ({ optionCount }) => {
             <Grid container spacing={2}>
                 {count.map(el => <Grid item xs={6}>
                     <FormControl fullWidth>
-                        <TextField label={`option ${el + 1 }`} />
+                        <TextField label={`option ${el + 1}`} />
                     </FormControl>
                 </Grid>)}
+            </Grid>
+        </div>
+    )
+}
+
+const Answer = ({ optionCount }) => {
+    let count = []
+    for (let i = 0; i < optionCount; i++) {
+        count.push(i)
+    }
+
+    return (
+        <div>
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <FormControl fullWidth>
+                        <Select>
+                            {count.map(el => <MenuItem value={el + 1}>{el + 1}</MenuItem>)}
+                        </Select>
+                    </FormControl>
+                </Grid>
             </Grid>
         </div>
     )
