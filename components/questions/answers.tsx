@@ -3,12 +3,12 @@ import React from 'react'
 import {
     Grid,
     FormControl,
-    TextField
+    Select,
+    MenuItem
 } from '@material-ui/core'
 
 
-const Options = ({ optionCount }) => {
-
+const Answer = ({ optionCount }) => {
     let count = []
     for (let i = 0; i < optionCount; i++) {
         count.push(i)
@@ -17,15 +17,16 @@ const Options = ({ optionCount }) => {
     return (
         <div>
             <Grid container spacing={2}>
-                {count.map(el => <Grid item xs={6}>
+                <Grid item xs={12}>
                     <FormControl fullWidth>
-                        <TextField label={`option ${el + 1}`} />
+                        <Select>
+                            {count.map(el => <MenuItem value={el + 1}>{el + 1}</MenuItem>)}
+                        </Select>
                     </FormControl>
-                </Grid>)}
+                </Grid>
             </Grid>
         </div>
     )
 }
 
-
-export default Options
+export default Answer
