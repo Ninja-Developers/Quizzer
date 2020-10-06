@@ -48,11 +48,14 @@ const Create = () => {
 
                 <Grid container spacing={4}>
                     <Grid item xs={10}>
-                        <button onClick={() => {
-                            console.log(mainRef.current)
-                        }}>
-                            check
-                        </button>
+                        <Button 
+                        variant="contained" 
+                        color="primary" 
+                        disableElevation
+                        
+                        >
+                            Create Quiz
+                        </Button>
                     </Grid>
                     <Grid item xs={2}>
                         <Button onClick={() => {
