@@ -52,7 +52,9 @@ const Create = () => {
                         variant="contained" 
                         color="primary" 
                         disableElevation
-                        
+                        onClick={() => {
+                            console.log(mainRef.current)
+                        }}
                         >
                             Create Quiz
                         </Button>
