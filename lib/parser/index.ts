@@ -5,7 +5,8 @@
 
 export interface Quiz {
     question: string,
-    options: Array<string>
+    options: Array<string>,
+    answer: number
 }
 
 export class FormParser {
@@ -27,25 +28,31 @@ export class FormParser {
 
         let optionDiv = qDiv.children[0].children[0].children[2];
 
-        
+        let answerDiv = qDiv.children[0].children[0].children[3]
 
         let quiz: Quiz = {
             question: questionDiv.children[0].children[0].children[1].children[0].value,
-            options: this.getoptionFields(optionDiv)
+            options: this.getoptionFields(optionDiv),
+            answer: this.getAnswerFields(answerDiv)
         }
         return quiz
     }
 
-    private getoptionFields(oDiv: any): Array<string>{
+    private getoptionFields(oDiv: any): Array<string> {
 
-        let arr: Array<string> = [] 
+        let arr: Array<string> = []
 
         let optDiv = oDiv.children[0].children[0].children
 
-        for(let i=0;i<optDiv.length; i++){
+        for (let i = 0; i < optDiv.length; i++) {
             arr.push(optDiv[i].children[0].children[0].children[1].children[0].value)
         }
 
         return arr
+    }
+
+    private getAnswerFields(aDiv: any): number {
+        let num: number = aDiv.children[0].children[0].children[0].children[0].children[0].children[1].value as number
+        return num || 0
     }
 }
