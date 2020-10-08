@@ -59,7 +59,7 @@ const Create = () => {
                             onClick={() => {
                                 let formParser = new FormParser(mainRef)
                                 let form: Array<Quiz> = formParser.genForm();
-                                console.log(JSON.stringify(form))
+                                alert(JSON.stringify(form))
                             }}
                         >
                             Create Quiz
