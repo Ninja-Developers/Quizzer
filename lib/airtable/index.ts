@@ -1,5 +1,1 @@
-export {
-    createQuiz,
-    fetchAQuiz,
-    getAllQuizzes
-} from './quiz'
+export * from './quiz'
