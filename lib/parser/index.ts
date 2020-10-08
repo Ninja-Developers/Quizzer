@@ -8,6 +8,7 @@ export interface Quiz {
 export class FormParser {
     private ref: any;
     private individualQuestions: Array<any>;
+    private data: Array<Quiz>;
     constructor(ref: any) {
         this.ref = ref
         this.individualQuestions = this.ref.current.children
@@ -20,7 +21,9 @@ export class FormParser {
             res.push(fields)
         }
 
-        return res
+        this.data = res
+
+        return this.data
     }
     private getFields(qDiv: any): Quiz {
         let questionDiv = qDiv.children[0].children[0].children[0];
