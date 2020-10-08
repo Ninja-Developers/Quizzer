@@ -13,6 +13,8 @@ import {
 // importing custom components 
 import { Question } from '../components/questions'
 
+import { FormParser } from '../lib/parser'
+
 const useStyle = makeStyles((theme: Theme) => ({
     paper: {
         padding: theme.spacing(4, 4),
@@ -38,6 +40,8 @@ const Create = () => {
 
     updateCountArray(qCount)
 
+
+
     return <>
         <div>
             <Container>
@@ -48,13 +52,14 @@ const Create = () => {
 
                 <Grid container spacing={4}>
                     <Grid item xs={10}>
-                        <Button 
-                        variant="contained" 
-                        color="primary" 
-                        disableElevation
-                        onClick={() => {
-                            console.log(mainRef.current)
-                        }}
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            disableElevation
+                            onClick={() => {
+                                let formParser = new FormParser(mainRef)
+                                formParser.genForm();
+                            }}
                         >
                             Create Quiz
                         </Button>
