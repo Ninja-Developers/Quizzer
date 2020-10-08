@@ -1,7 +1,3 @@
-/**
- * console.log(this.individualQuestions[i].children[0].children[0].children[0].children[0].children[0].children[1].children[0].value)
- * 
- */
 
 export interface Quiz {
     question: string,
@@ -17,11 +13,14 @@ export class FormParser {
         this.individualQuestions = this.ref.current.children
     }
 
-    genForm() {
+    genForm(): Array<Quiz> {
+        let res: Array<Quiz> = []
         for (let i = 0; i < this.individualQuestions.length; i++) {
-            let fields = this.getFields(this.individualQuestions[i])
-            console.log(fields)
+            let fields: Quiz = this.getFields(this.individualQuestions[i])
+            res.push(fields)
         }
+
+        return res
     }
     private getFields(qDiv: any): Quiz {
         let questionDiv = qDiv.children[0].children[0].children[0];
@@ -31,11 +30,15 @@ export class FormParser {
         let answerDiv = qDiv.children[0].children[0].children[3]
 
         let quiz: Quiz = {
-            question: questionDiv.children[0].children[0].children[1].children[0].value,
+            question: this.getQuestionFeild(questionDiv),
             options: this.getoptionFields(optionDiv),
             answer: this.getAnswerFields(answerDiv)
         }
         return quiz
+    }
+
+    private getQuestionFeild(qDiv: any): string {
+        return qDiv.children[0].children[0].children[1].children[0].value
     }
 
     private getoptionFields(oDiv: any): Array<string> {

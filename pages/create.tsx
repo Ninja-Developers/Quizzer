@@ -13,7 +13,7 @@ import {
 // importing custom components 
 import { Question } from '../components/questions'
 
-import { FormParser } from '../lib/parser'
+import { FormParser, Quiz } from '../lib/parser'
 
 const useStyle = makeStyles((theme: Theme) => ({
     paper: {
@@ -58,7 +58,8 @@ const Create = () => {
                             disableElevation
                             onClick={() => {
                                 let formParser = new FormParser(mainRef)
-                                formParser.genForm();
+                                let form: Array<Quiz> = formParser.genForm();
+                                console.log(JSON.stringify(form))
                             }}
                         >
                             Create Quiz
