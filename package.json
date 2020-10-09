@@ -27,7 +27,7 @@
     "@types/react-redux": "^7.1.9",
     "airtable": "^0.10.0",
     "dotenv": "^8.2.0",
-    "next": "^9.5.3",
+    "next": "^9.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

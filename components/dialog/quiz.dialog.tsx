@@ -10,7 +10,8 @@ import {
 
 interface Prop {
     open: boolean,
-    onClose: any
+    onClose?: any,
+    yes?: any
 }
 
 const QuizDialog = (props: Prop) => {
@@ -19,16 +20,15 @@ const QuizDialog = (props: Prop) => {
         <div>
             <Dialog
                 open={props.open}
-                onClose={props.onClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle>{"Do you want to create this quiz"}</DialogTitle>
                 <DialogActions>
-                    <Button>
+                    <Button onClick={props.yes}>
                         Yes
                     </Button>
-                    <Button>
+                    <Button onClick={props.onClose}>
                         No
                     </Button>
                 </DialogActions>

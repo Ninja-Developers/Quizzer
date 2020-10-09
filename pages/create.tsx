@@ -45,11 +45,19 @@ const Create = () => {
 
     updateCountArray(qCount)
 
+    /**
+     * 
+     */
+    const generateQuiz = async () => {
+        let formParser = new FormParser(mainRef)
+        let form: Array<Quiz> = formParser.genForm();
+        dialogClose();
+    }
 
 
     return <>
         <div>
-            <QuizDialog open={dialog} onClose={dialogClose} />
+            <QuizDialog open={dialog} onClose={dialogClose} yes={generateQuiz} />
             <Container>
 
                 <div ref={mainRef}>
@@ -63,8 +71,7 @@ const Create = () => {
                             color="primary"
                             disableElevation
                             onClick={() => {
-                                let formParser = new FormParser(mainRef)
-                                let form: Array<Quiz> = formParser.genForm();
+
                                 setDialog(!dialog)
                             }}
                         >
