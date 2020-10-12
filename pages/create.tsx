@@ -51,6 +51,7 @@ const Create = () => {
     const generateQuiz = async () => {
         let formParser = new FormParser(mainRef)
         let form: Array<Quiz> = formParser.genForm();
+        alert(JSON.stringify(form))
         dialogClose();
     }
 
