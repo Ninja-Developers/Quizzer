@@ -1,5 +1,5 @@
 // importing modules 
-import { useRef, useState, CSSProperties, ChangeEvent } from 'react'
+import { useRef, useState } from 'react'
 
 import {
     Grid,
@@ -29,6 +29,7 @@ const Create = () => {
     const classes = useStyle()
     let [qCount, setQCount] = useState(1)
     let [dialog, setDialog] = useState(false)
+    let [isGen, setGen] = useState(false)
     let dialogClose = () => {
         setDialog(!dialog)
     }
@@ -54,7 +55,6 @@ const Create = () => {
         alert(JSON.stringify(form))
         dialogClose();
     }
-
 
     return <>
         <div>

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { Quiz } from '../../components/quiz'
 
 
 export default () => {
@@ -9,7 +10,7 @@ export default () => {
 
     return (
         <div>
-            {id}
+            <Quiz />
         </div>
     )
 }
