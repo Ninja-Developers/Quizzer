@@ -35,7 +35,7 @@ const Quiz = () => {
                 <div className={classes.quiz}>
                     <Grid container spacing={4}>
                         <Grid item xs={12}>
-                            <Holder question="sdsdsd" options={['']} />
+                            <Holder question="What is my name?" options={['Souvik', 'Shounak']} />
                         </Grid>
                     </Grid>
                 </div>
