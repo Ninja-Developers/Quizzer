@@ -7,6 +7,8 @@ export default class Db {
     }
 
     addQuiz(question: string) {
-        let data = fs.writeFileSync(this.filePath, question);
+        let data = fs.readFileSync(this.filePath);
+        console.log(JSON.parse(data.toString()))
+        fs.writeFileSync(this.filePath, question);
     }
 }
