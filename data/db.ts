@@ -47,6 +47,8 @@ export default class Db {
                 let db: Array<StoreType> = JSON.parse(data.toString());
 
                 return db
+            } else {
+                return []
             }
         } catch (error) {
             throw error
@@ -54,12 +56,6 @@ export default class Db {
     }
 
     private _write(data: Array<StoreType>) {
-        try {
-            if (fs.existsSync(this.filePath)) {
-                fs.writeFileSync(this.filePath, JSON.stringify(data))
-            }
-        } catch (error) {
-            throw error
-        }
+        fs.writeFileSync(this.filePath, JSON.stringify(data))
     }
 }
