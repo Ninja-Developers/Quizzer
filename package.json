@@ -27,6 +27,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/uniqid": "^5.2.0",
     "airtable": "^0.10.0",
+    "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "next": "^9.5.4",
     "next-connect": "^0.9.0",
