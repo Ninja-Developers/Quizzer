@@ -32,7 +32,7 @@ export default class Db {
         let res: StoreType;
 
         data.forEach((el: StoreType) => {
-            if(el.id === id){
+            if (el.id === id) {
                 res = el;
             }
         });
@@ -41,13 +41,25 @@ export default class Db {
     }
 
     private _fetchData(): Array<StoreType> {
-        let data = fs.readFileSync(this.filePath);
-        let db: Array<StoreType> = JSON.parse(data.toString());
+        try {
+            if (fs.existsSync(this.filePath)) {
+                let data = fs.readFileSync(this.filePath);
+                let db: Array<StoreType> = JSON.parse(data.toString());
 
-        return db
+                return db
+            }
+        } catch (error) {
+            throw error
+        }
     }
 
     private _write(data: Array<StoreType>) {
-        fs.writeFileSync(this.filePath, JSON.stringify(data))
+        try {
+            if (fs.existsSync(this.filePath)) {
+                fs.writeFileSync(this.filePath, JSON.stringify(data))
+            }
+        } catch (error) {
+            throw error
+        }
     }
 }
