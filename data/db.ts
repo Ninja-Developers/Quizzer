@@ -13,7 +13,7 @@ export default class Db {
         this.filePath = "./data/data.json"
     }
 
-    addQuiz(question: string) {
+    addQuiz(question: string): string {
         let id = uniqid();
         let data = this._fetchData();
         let newQuestion: StoreType = {
@@ -24,6 +24,8 @@ export default class Db {
         data.push(newQuestion);
 
         this._write(data);
+
+        return id;
 
     }
     fetchAQuiz(id: string): StoreType {

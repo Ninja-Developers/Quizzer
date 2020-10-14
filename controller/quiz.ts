@@ -9,8 +9,8 @@ export const createQuiz = (req: any, res: any) => {
     let { question } = req.body;
 
     try {
-        db.addQuiz(JSON.stringify([{ name: "Souvik" }]))
-        return res.json([]);
+        let id = db.addQuiz(question)
+        return res.send(id);
     } catch (error) {
         return res.status(404).send(error)
     }
