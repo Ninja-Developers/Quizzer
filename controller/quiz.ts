@@ -9,7 +9,7 @@ export const createQuiz = (req: any, res: any) => {
     let { question } = req.body;
 
     try {
-        let id = db.addQuiz(question)
+        let id = db.addQuiz(question);
         return res.send(id);
     } catch (error) {
         return res.status(404).send(error)
