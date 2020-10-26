@@ -8,9 +8,13 @@ export default () => {
 
     const { id } = router.query
 
+    let obj = [
+        { question: 'What is my name', options: ['Souvik', 'Shounak'], answer: 0 }
+    ]
+
     return (
         <div>
-            <Quiz />
+            <Quiz quiz={obj} />
         </div>
     )
 }
