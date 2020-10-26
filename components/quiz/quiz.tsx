@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { Quiz as QI } from '../../lib/types/quiz';
 import {
     Container,
     Grid,
@@ -23,7 +24,7 @@ const useStyle = makeStyles(theme => ({
 }))
 
 interface Props {
-    quiz: Array<Object>
+    quiz: Array<QI>
 }
 
 const Quiz = (props: Props) => {
