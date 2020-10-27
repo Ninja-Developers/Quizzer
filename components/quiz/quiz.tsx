@@ -35,6 +35,7 @@ const Quiz = (props: Props) => {
 
     return (
         <div>
+        
             <Typography variant="h3" className={classes.logo} >
                 Quizzer
             </Typography>
