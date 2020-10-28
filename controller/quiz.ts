@@ -14,8 +14,6 @@ export const createQuiz = (req: any, res: any) => {
     } catch (error) {
         return res.status(404).send(error)
     }
-
-
 }
 
 export const fetchAQuiz = (req: any, res: any) => {
