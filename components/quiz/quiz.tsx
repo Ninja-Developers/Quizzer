@@ -32,7 +32,6 @@ const Quiz = (props: Props) => {
     const classes = useStyle();
     let [quizNum, setQuizNum] = useState(0);
     let len = props.quiz.length
-
     return (
         <div>
         
