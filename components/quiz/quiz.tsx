@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core/colors'
 
 import Holder from './holder'
+import quiz from '../../redux/reducers/quiz';
 
 const useStyle = makeStyles(theme => ({
     logo: {
@@ -32,9 +33,15 @@ const Quiz = (props: Props) => {
     const classes = useStyle();
     let [quizNum, setQuizNum] = useState(0);
     let len = props.quiz.length
+
+    let next = () => {
+        if (quizNum < len) {
+            setQuizNum(quizNum + 1);
+        }
+    }
     return (
         <div>
-        
+
             <Typography variant="h3" className={classes.logo} >
                 Quizzer
             </Typography>
@@ -47,7 +54,7 @@ const Quiz = (props: Props) => {
                         </Grid>
 
                         <Grid item xs={6}>
-                            <Button>
+                            <Button onClick={next}>
                                 next
                             </Button>
                         </Grid>
