@@ -1,9 +1,12 @@
-
+import Axios from 'axios'
 export class Airtable{
-    private const URL: string = "ttps://api.airtable.com/v0";
+    private URL: string = "ttps://api.airtable.com/v0";
     constructor(){
     }
-    fetchAQuiz(){
-        
+    async fetchAQuiz(id: string){
+        Axios({
+            url: this.URL,
+
+        })
     }
 }
