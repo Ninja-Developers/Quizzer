@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev src/index.ts",
+    "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "try": "node start.js",
     "client-build": "cd client && npm run build"
   },
@@ -31,6 +31,7 @@
   "dependencies": {
     "@types/mongoose": "^5.10.1",
     "@types/socket.io": "^2.1.11",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.15",
