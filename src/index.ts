@@ -2,6 +2,7 @@ import * as express from 'express';
 import { PORT, MONGO_URL } from './config';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
+import { init } from './socket'
 
 // importing api routes 
 import apiRoutes from './router';
@@ -23,8 +24,9 @@ app.get('*', (req, res) => {
 mongoose.connect(MONGO_URL, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => {
         console.log('Database Connected')
-        app.listen(PORT, () => {
+        const server = app.listen(PORT, () => {
             console.log(`Server started on port ${PORT}`);
         })
+        let io = init(server);
     })
 
