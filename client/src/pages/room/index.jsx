@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 
 const Index = () => {
+    let [roomId, setRoomId] = useState(null);
 
     let create = () => {
         let name = prompt('Name your room');
@@ -12,8 +13,9 @@ const Index = () => {
                 name: name
             }
         }).then(res => {
-            console.log(res.data);
+            console.log(res.data.id);
             alert('Room Created');
+            setRoomId(res.data.id);
         }).catch(err => {
             console.log(err)
             alert('something went wrong');
@@ -35,6 +37,11 @@ const Index = () => {
                 </button>
             </center>
 
+            <center>
+                {(roomId)? <>
+                roomId: {roomId}
+                </>: null}
+            </center>
         </div>
     )
 }
