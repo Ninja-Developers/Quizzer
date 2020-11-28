@@ -1,10 +1,23 @@
 import React from 'react';
-
+import Axios from 'axios';
 
 const Index = () => {
 
     let create = () => {
-        let data = prompt('Name your room');
+        let name = prompt('Name your room');
+        Axios({
+            method: 'POST',
+            url: 'http://localhost:5000/api/rooms',
+            data: {
+                name: name
+            }
+        }).then(res => {
+            console.log(res.data);
+            alert('Room Created');
+        }).catch(err => {
+            console.log(err)
+            alert('something went wrong');
+        })
     }
 
     return (
