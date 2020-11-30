@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import {
     Button
-} from '@material-ui/core'
+} from '@material-ui/core';
 
 const Index = () => {
     let [roomId, setRoomId] = useState(null);
+    const history = useHistory();
 
     let create = () => {
         let name = prompt('Name your room');
+        if (name === '' || name === null) {
+            return;
+        }
         Axios({
             method: 'POST',
             url: 'http://localhost:5000/api/rooms',
@@ -17,8 +22,7 @@ const Index = () => {
             }
         }).then(res => {
             console.log(res.data.id);
-            alert('Room Created');
-            setRoomId(res.data.id);
+            history.push(`/room/${res.data.id}`);
         }).catch(err => {
             console.log(err)
             alert('something went wrong');
