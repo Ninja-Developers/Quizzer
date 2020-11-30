@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom';
 // importing pages 
 import Home from './pages/home'
 import Room from './pages/room'
-
 let socket;
 
 function App() {
