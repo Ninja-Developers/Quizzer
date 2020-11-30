@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import {
+    Button
+} from '@material-ui/core'
 
 const Index = () => {
     let [roomId, setRoomId] = useState(null);
@@ -28,19 +31,19 @@ const Index = () => {
                 <h1>Rooms Page</h1>
             </center>
             <center>
-                <button onClick={create}>
+                <Button onClick={create}>
                     Create
-                </button>
+                </Button>
                 {"\t"}
-                <button>
+                <Button>
                     join
-                </button>
+                </Button>
             </center>
 
             <center>
-                {(roomId)? <>
-                roomId: {roomId}
-                </>: null}
+                {(roomId) ? <>
+                    roomId: {roomId}
+                </> : null}
             </center>
         </div>
     )
