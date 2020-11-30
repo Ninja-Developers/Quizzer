@@ -9,6 +9,9 @@ const Index = () => {
 
     let create = () => {
         let name = prompt('Name your room');
+        if (name === '' || name === null) {
+            return;
+        }
         Axios({
             method: 'POST',
             url: 'http://localhost:5000/api/rooms',
