@@ -5,6 +5,9 @@ A fun quiz app for all
 > UNDER DEVELOPMENT
 ---
 
+## Intruduction 
+Quizzer is an application that bridges the gap between the online events speaker and the attendees. We want to make online events as fun and interactive as offline events. 
+
 ## Setting up local Development server 
 This application is built on **MERN** stack and using typescript in backend and react with javascript in client. 
 To run this application you need **nodejs**, installed in your computer, you can install nodejs from [here](https://nodejs.org/en/)
