@@ -24,4 +24,4 @@ Steps to follow:
 
 ## Contributing 
 To contribute to this repository please read our [contributing.md](https://github.com/Tech-Phantoms/Quizzer/blob/master/CONTRIBUTING.md),
-also go though our [code of conduct](https://github.com/Tech-Phantoms/Quizzer/blob/master/CODE_OF_CONDUCT.md)
+also go through our [code of conduct](https://github.com/Tech-Phantoms/Quizzer/blob/master/CODE_OF_CONDUCT.md)
