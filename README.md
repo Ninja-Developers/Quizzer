@@ -20,3 +20,8 @@ Steps to follow:
 - To run the server run `npm run dev` in the root folder
 - To run the client run `cd client` then run `npm start`
 - Server runs on `PORT:5000` and client runs on `PORT:3000`
+
+
+## Contributing 
+To contribute to this repository please read our [contributing.md](https://github.com/Tech-Phantoms/Quizzer/blob/master/CONTRIBUTING.md),
+also go though our [code of conduct](https://github.com/Tech-Phantoms/Quizzer/blob/master/CODE_OF_CONDUCT.md)
