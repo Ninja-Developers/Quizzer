@@ -25,6 +25,10 @@ export class UserDao {
     }
 
     async create(req: CreateUserRequest) {
+        /**
+         * this is where we will hash our password 
+         * before saving it into the database. 
+         */
         try {
             let res: any = await userModel.create({
                 username: req.username,
