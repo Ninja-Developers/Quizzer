@@ -1,37 +1,45 @@
+import { User } from './user';
 import { userModel } from './user.model';
-import { CreateUserRequest } from './types';
+import { CreateUserRequest } from './types'
 
-class User {
+export class UserDao {
     constructor() {
 
     }
 
-    async getUser(id: string) {
+    async find(username: string): Promise<User> {
         try {
-            let user = await userModel.findById(id);
-            if (!user) {
-                throw new Error('User does not exists');
+            let res: any = await userModel.findOne({ username: username });
+
+            if (!username) {
+                throw "Invalid username";
             }
 
+            let user = new User(res.username, res.password);
+
             return user;
+
         } catch (error) {
             throw error;
         }
     }
 
-    async createUser(req: CreateUserRequest) {
+    async create(req: CreateUserRequest) {
+        /**
+         * this is where we will hash our password 
+         * before saving it into the database. 
+         */
         try {
-            let user = new userModel({
+            let res: any = await userModel.create({
                 username: req.username,
+                password: req.password,
                 email: req.email
             });
 
-            await user.save();
-            return "User Created"
+            let user = new User(res.username, res.password);
+            return user;
         } catch (error) {
-            throw error            
+            throw error;
         }
     }
 }
-
-export default User;
