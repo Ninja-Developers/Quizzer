@@ -1,5 +1,6 @@
 import { User } from './user';
 import { userModel } from './user.model';
+import { CreateUserRequest } from './types'
 
 export class UserDao {
     constructor() {
@@ -18,6 +19,21 @@ export class UserDao {
 
             return user;
 
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async create(req: CreateUserRequest) {
+        try {
+            let res: any = await userModel.create({
+                username: req.username,
+                password: req.password,
+                email: req.email
+            });
+
+            let user = new User(res.username, res.password);
+            return user;
         } catch (error) {
             throw error;
         }
