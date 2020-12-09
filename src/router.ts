@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { createRooms, getRoom, deleteRoom } from './live_rooms/live.room.controller';
+import { localSignup, localLogin } from './auth/auth.controller'
 import * as passport from 'passport';
 const router = Router();
 
@@ -12,9 +13,10 @@ router.route('/')
 
 // Local Authentication 
 router.route('/auth/local/login')
+    .post(passport.authenticate('local', { session: false }), localLogin);
 
 router.route('/auth/local/signup')
-    .post(passport.authenticate('local', { session: false }));
+    .post(localSignup);
 
 
 // Rooms route 
