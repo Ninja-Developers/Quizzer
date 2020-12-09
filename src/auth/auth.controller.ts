@@ -3,7 +3,8 @@ import { UserDao } from '../user';
 const userDao = new UserDao();
 
 export const localLogin = (req: Request, res: Response) => {
-
+    console.log(req.user);
+    return res.status(200).send('Login successfull');
 }
 
 export const localSignup = async (req: Request, res: Response) => {
@@ -16,7 +17,7 @@ export const localSignup = async (req: Request, res: Response) => {
         });
 
         return res.status(201).json(user);
-        
+
     } catch (error) {
         return res.status(404).send(error);
     }

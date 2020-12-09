@@ -16,7 +16,7 @@ export class UserDao {
                 throw "Invalid username";
             }
 
-            let user = new User(res.username, res.password);
+            let user = new User(res._id, res.username, res.password);
 
             return user;
 
@@ -45,7 +45,7 @@ export class UserDao {
                 email: email
             });
 
-            let user = new User(res.username, res.password);
+            let user = new User(res.id, res.username, res.password);
             return user;
         } catch (error) {
             throw error;
