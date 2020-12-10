@@ -12,7 +12,7 @@ export class UserDao {
         try {
             let res: any = await userModel.findOne({ username: username });
 
-            if (!username) {
+            if (!res) {
                 throw "Invalid username";
             }
 
