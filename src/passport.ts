@@ -2,6 +2,7 @@ import * as passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserDao } from './user';
 import { User } from './user/user';
+import {ExtractJwt, Strategy as JwtStrategy} from 'passport-jwt'
 
 const userDao = new UserDao();
 
@@ -23,4 +24,15 @@ passport.use(new LocalStrategy({
         return done(error);
     }
 
+}));
+
+
+passport.use(new JwtStrategy({
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: ''
+}, (payload, done) => {
+    /**
+     * Here we recieve the parsed jwt payload
+     * and check if the user is present in the database.
+     */
 }))
