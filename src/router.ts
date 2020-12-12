@@ -9,7 +9,7 @@ router.route('/')
         res.status(200).send('Quizzer API ');
     })
 
-// Authentication routes //
+//================================= Authentication routes ================================//
 
 // Local Authentication 
 router.route('/auth/local/login')
