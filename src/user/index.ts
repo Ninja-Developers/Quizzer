@@ -37,6 +37,7 @@ export class UserDao {
             email
         } = req;
         try {
+            await this.checkUser(username);
             const hashedPassword = await bcrypt.hash(password, 10);
 
             let res: any = await userModel.create({
@@ -49,6 +50,13 @@ export class UserDao {
             return user;
         } catch (error) {
             throw error;
+        }
+    }
+
+    private async checkUser(username: string) {
+        let user = await userModel.findOne({ username: username });
+        if (user) {
+            throw "username already taken";
         }
     }
 }
