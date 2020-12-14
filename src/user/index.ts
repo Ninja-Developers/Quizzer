@@ -25,6 +25,22 @@ export class UserDao {
         }
     }
 
+    async findById(id: string): Promise<User> {
+        try {
+            let res: any = await userModel.findById(id);
+
+            if (!res) {
+                throw "Invalid user Id"
+            }
+
+            let user = new User(res._id, res.username, res.password);
+            return user;
+
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async create(req: CreateUserRequest) {
         /**
          * this is where we will hash our password 
