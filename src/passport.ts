@@ -2,7 +2,7 @@ import * as passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { UserDao } from './user';
 import { User } from './user/user';
-import {ExtractJwt, Strategy as JwtStrategy} from 'passport-jwt'
+import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -32,9 +32,20 @@ passport.use(new LocalStrategy({
 passport.use(new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.JWT_SECRET
-}, (payload, done) => {
+}, async (payload, done) => {
     /**
      * Here we recieve the parsed jwt payload
      * and check if the user is present in the database.
      */
+    let { id } = payload;
+
+    try {
+        let user: User = await userDao.findById(id);
+
+        return done(user, true);
+
+    } catch (error) {
+        return done(error, false)
+    }
+
 }))
