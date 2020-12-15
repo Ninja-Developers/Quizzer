@@ -15,7 +15,7 @@ export const localLogin = (req: Request, res: Response) => {
             username: user.username
         });
     } catch (error) {
-        errorHandler(res, error);
+        return errorHandler(res, error);
     }
 }
 
