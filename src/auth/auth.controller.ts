@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { UserDao } from '../user';
 import * as jwt from 'jsonwebtoken';
 import { User } from '../user/user';
+import { errorHandler } from '../utils/error'
 const userDao = new UserDao();
 
 export const localLogin = (req: Request, res: Response) => {
@@ -14,7 +15,7 @@ export const localLogin = (req: Request, res: Response) => {
             username: user.username
         });
     } catch (error) {
-        return res.status(404).send('please try again');
+        return errorHandler(res, error);
     }
 }
 
@@ -30,6 +31,6 @@ export const localSignup = async (req: Request, res: Response) => {
         return res.status(201).json(user);
 
     } catch (error) {
-        return res.status(404).send(error);
+        return errorHandler(res, error);
     }
 }
