@@ -1,6 +1,7 @@
 import { User } from './user';
 import { userModel } from './user.model';
 import { CreateUserRequest } from './types'
+import { HttpError } from '../utils/error/error'
 import * as bcrypt from 'bcrypt';
 
 export class UserDao {
@@ -13,7 +14,7 @@ export class UserDao {
             let res: any = await userModel.findOne({ username: username });
 
             if (!res) {
-                throw "Invalid username";
+                throw new HttpError("Invalid username", 400);
             }
 
             let user = new User(res._id, res.username, res.password);
