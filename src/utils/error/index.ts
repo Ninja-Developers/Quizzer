@@ -3,8 +3,8 @@ import { Response } from 'express';
 
 
 export const errorHandler = (res: Response, error: HttpError) => {
-    switch (error.code) {
-        case 404:
-            return
+    if (!(error instanceof HttpError)) {
+        return res.status(500).send("internal Server Error")
     }
+    return res.status(error.code).send(error.message);
 }
