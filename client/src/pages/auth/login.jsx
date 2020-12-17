@@ -9,7 +9,7 @@ const Login = props => {
                 <center>
                     <h3>Login</h3>
                 </center>
-                <Form />
+                <Form type="login" />
             </div>
         </div>
     )
