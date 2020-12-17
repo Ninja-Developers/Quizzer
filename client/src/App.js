@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // importing pages 
 import Home from './pages/home';
 import Room from './pages/room';
+import { Login, Signup } from './pages/auth'
 import RoomDashboad from './pages/room_dashboard';
 let socket;
 
@@ -19,6 +20,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/room" exact component={Room} />
+        <Route path="/login" exact component={Login} />
+        <Route path="/signup" exact component={Signup} />
         <Route path="/room/:roomId" exact component={RoomDashboad} />
       </Switch>
     </div>
