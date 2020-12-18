@@ -7,6 +7,10 @@ import Home from './pages/home';
 import Room from './pages/room';
 import { Login, Signup } from './pages/auth'
 import RoomDashboad from './pages/room_dashboard';
+
+// importing custom components 
+import Navbar from './components/navbar';
+
 let socket;
 
 function App() {
@@ -17,6 +21,7 @@ function App() {
   }, [])
   return (
     <div>
+      <Navbar />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/room" exact component={Room} />
