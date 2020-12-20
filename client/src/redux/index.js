@@ -6,8 +6,11 @@ import {
 
 import thunk from 'redux-thunk';
 
-const store = createStore(combineReducers({
+// importing reducers 
+import user from './reducers/user';
 
+const store = createStore(combineReducers({
+    user
 }), applyMiddleware(thunk));
 
 export default store;
