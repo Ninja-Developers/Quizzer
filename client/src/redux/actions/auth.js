@@ -1,9 +1,13 @@
 import Axios from 'axios';
 
+//importing constants 
+import {
+    AUTH
+} from '../constants';
 
 const login = user => {
     return {
-        type: '',
+        type: AUTH,
         payload: user
     }
 }
