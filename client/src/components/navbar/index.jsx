@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = (props) => {
     let route = useHistory();
 
     const jump = path => {
@@ -22,14 +23,14 @@ const Navbar = () => {
                         <div class="bar3"></div>
                     </label>
                     <div class="collapsible-body">
-                        <ul class="inline">
+                        {((props.isLoggedIn) ? null : <ul class="inline">
                             <li>
                                 <button className="btn-small" onClick={() => { jump('/login') }}>Login</button>
                             </li>
                             <li>
                                 <button className="btn-small" onClick={() => { jump('/signup') }}>Signup</button>
                             </li>
-                        </ul>
+                        </ul>)}
                     </div>
                 </div>
             </nav>
@@ -37,4 +38,10 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);
