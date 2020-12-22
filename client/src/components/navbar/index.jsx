@@ -1,9 +1,10 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Navbar = () => {
+const Navbar = (props) => {
     let route = useHistory();
-    
+
     const jump = path => {
         route.push(path);
     }
@@ -12,7 +13,7 @@ const Navbar = () => {
         <div>
             <nav className="split-nav">
                 <div className="nav-brand">
-                    <h3 style={{cursor: 'pointer'}} onClick={() => {jump('/')}}>Quizzer</h3>
+                    <h3 style={{ cursor: 'pointer' }} onClick={() => { jump('/') }}>Quizzer</h3>
                 </div>
                 <div className="collapsible">
                     <input id="collapsible1" type="checkbox" name="collapsible1" />
@@ -22,14 +23,14 @@ const Navbar = () => {
                         <div class="bar3"></div>
                     </label>
                     <div class="collapsible-body">
-                        <ul class="inline">
+                        {((props.isLoggedIn) ? null : <ul class="inline">
                             <li>
-                                <button className="btn-small" onClick={() => {jump('/login')}}>Login</button>
+                                <button className="btn-small" onClick={() => { jump('/login') }}>Login</button>
                             </li>
                             <li>
-                                <button className="btn-small" onClick={() => {jump('/signup')}}>Signup</button>
+                                <button className="btn-small" onClick={() => { jump('/signup') }}>Signup</button>
                             </li>
-                        </ul>
+                        </ul>)}
                     </div>
                 </div>
             </nav>
@@ -37,4 +38,10 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.user.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);

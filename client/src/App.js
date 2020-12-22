@@ -11,9 +11,12 @@ import RoomDashboad from './pages/room_dashboard';
 // importing custom components 
 import Navbar from './components/navbar';
 
+// importing redux
+import { connect } from 'react-redux';
+
 let socket;
 
-function App() {
+function App(props) {
   React.useEffect(() => {
     socket = io('http://localhost:5000/');
     socket.emit('join', { name: 'Souvik' });
@@ -33,4 +36,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    token: state.user.token
+  }
+}
+
+export default connect(mapStateToProps)(App);
