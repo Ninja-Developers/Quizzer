@@ -5,6 +5,11 @@ import {
     AUTH
 } from '../constants';
 
+// importing urls 
+import {
+    LOGIN_URL
+} from '../url';
+
 const login = user => {
     return {
         type: AUTH,
@@ -33,7 +38,7 @@ const signupAsync = () => {
     return dispath => {
         Axios({
             method: 'POST',
-            url: ''
+            url: LOGIN_URL
         }).then(res => {
             dispath(login(res.data));
         }).catch(err => {
