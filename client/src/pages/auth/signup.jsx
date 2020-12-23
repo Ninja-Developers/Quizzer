@@ -1,5 +1,7 @@
 import React from 'react';
 import Form from './components/form';
+import { connect } from 'react-redux';
+import { signup } from '../../redux/actions/auth';
 
 const Signup = props => {
 
@@ -9,11 +11,23 @@ const Signup = props => {
                 <center>
                     <h3>Signup</h3>
                 </center>
-                <Form type="signup" />
+                <Form type="signup" authController={props.signup} />
             </div>
 
         </div>
     )
 }
 
-export default Signup;
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signup: (username, password) => { dispatch(signup(username, password)) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
