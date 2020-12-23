@@ -11,7 +11,7 @@ const Login = props => {
                 <center>
                     <h3>Login</h3>
                 </center>
-                <Form type="login" />
+                <Form type="login" authController={props.login} />
             </div>
         </div>
     )

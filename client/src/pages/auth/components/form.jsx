@@ -76,7 +76,8 @@ const Form = props => {
 }
 
 Form.propTypes = {
-    type: PropTypes.oneOf(['login', 'signup']).isRequired
+    type: PropTypes.oneOf(['login', 'signup']).isRequired,
+    authController: PropTypes.func
 }
 
 
