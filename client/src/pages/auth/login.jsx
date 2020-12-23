@@ -1,5 +1,7 @@
 import React from 'react';
 import Form from './components/form';
+import { connect } from 'react-redux';
+import { login } from '../../redux/actions/auth';
 
 const Login = props => {
 
@@ -15,4 +17,16 @@ const Login = props => {
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispath => {
+    return {
+        login: (username, password) => { dispath(login(username, password)) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

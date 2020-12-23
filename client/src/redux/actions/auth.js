@@ -12,12 +12,15 @@ const login = user => {
     }
 }
 
-const loginAsync = () => {
+const loginAsync = (username, password) => {
     return dispath => {
         Axios({
             method: 'POST',
             url: '',
-
+            data: {
+                username: username,
+                password: password
+            }
         }).then(res => {
             dispath(login(res.data));
         }).catch(err => {
