@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const Form = props => {
@@ -6,16 +6,37 @@ const Form = props => {
         type
     } = props
 
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
     if (type === "login") {
         return (
             <div>
                 <div className="row flex-center">
                     <div class="col sm-6">
                         <div class="form-group">
-                            <input class="input-block" type="text" id="username" placeholder="username" />
+                            <input
+                                class="input-block"
+                                type="text"
+                                id="username"
+                                placeholder="username"
+                                value={username}
+                                onChange={(e) => {
+                                    setUsername(e.target.value);
+                                }}
+                            />
                         </div>
                         <div class="form-group">
-                            <input class="input-block" type="text" id="username" placeholder="Password" />
+                            <input
+                                class="input-block"
+                                type="text"
+                                id="username"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value);
+                                }}
+                            />
                         </div>
 
                     </div>
@@ -55,7 +76,8 @@ const Form = props => {
 }
 
 Form.propTypes = {
-    type: PropTypes.oneOf(['login', 'signup']).isRequired
+    type: PropTypes.oneOf(['login', 'signup']).isRequired,
+    authController: PropTypes.func
 }
 
 

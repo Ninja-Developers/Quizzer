@@ -5,6 +5,11 @@ import {
     AUTH
 } from '../constants';
 
+// importing urls 
+import {
+    LOGIN_URL
+} from '../url';
+
 const login = user => {
     return {
         type: AUTH,
@@ -12,12 +17,15 @@ const login = user => {
     }
 }
 
-const loginAsync = () => {
+const loginAsync = (username, password) => {
     return dispath => {
         Axios({
             method: 'POST',
             url: '',
-
+            data: {
+                username: username,
+                password: password
+            }
         }).then(res => {
             dispath(login(res.data));
         }).catch(err => {
@@ -30,7 +38,7 @@ const signupAsync = () => {
     return dispath => {
         Axios({
             method: 'POST',
-            url: ''
+            url: LOGIN_URL
         }).then(res => {
             dispath(login(res.data));
         }).catch(err => {
